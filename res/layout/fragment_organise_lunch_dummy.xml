@@ -1,0 +1,85 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".OrganiseLunch$DummySectionFragment" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/restaurant"
+            android:layout_width="257dp"
+            android:layout_height="wrap_content"
+            android:text="Place:"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time:"
+            android:textAppearance="?android:attr/textAppearanceLarge" />        
+    </TableRow>
+    
+	<TableRow
+	    android:id="@+id/tableRow2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" >
+
+		<EditText
+		    android:id="@+id/restaurantInput"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="Where to Lunchify" >
+
+		    <requestFocus />
+		</EditText>
+
+
+	</TableRow>
+	
+	<TableRow
+	    android:id="@+id/tableRow3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" >
+
+		<EditText
+		    android:id="@+id/timeInput"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="When to Lunchify (12:00?)"
+		    android:inputType="time" />
+
+	</TableRow>
+	
+	<TableRow
+	    android:id="@+id/tableRow4"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" >
+
+		<Button
+		    android:id="@+id/lunchifyButton"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Lunchify!!" />
+
+	</TableRow>
+
+</TableLayout>
+
