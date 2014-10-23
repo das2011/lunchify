@@ -159,9 +159,6 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 			restaurantEndpoint.addValueEventListener(new ValueEventListener() {
 			    @Override
 			    public void onDataChange(DataSnapshot data) {
-			    	
-			    	System.out.println("data is " + data.getValue());
-			    	System.out.println("restaurant is: " + restaurant);
 			    	if(data != null && data.getValue() != null){
 				        restaurant.setText("Place: " + data.getValue().toString());
 			    	}
