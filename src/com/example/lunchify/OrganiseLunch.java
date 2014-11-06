@@ -24,13 +24,8 @@ import com.firebase.client.ValueEventListener;
 
 public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavigationListener {
 
-	/**
-	 * The serialization (saved instance state) Bundle key representing the
-	 * current dropdown position.
-	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
-	public static Firebase lunchifyEndpoint;
 	public static Firebase restaurantEndpoint;
 	public static Firebase timeEndpoint;
 	
@@ -39,14 +34,11 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_organise_lunch);
 
-		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-		// Set up the dropdown list navigation in the action bar.
 		actionBar.setListNavigationCallbacks(
-		// Specify a SpinnerAdapter to populate the dropdown list.
 				new ArrayAdapter<String>(getActionBarThemedContextCompat(),
 						android.R.layout.simple_list_item_1,
 						android.R.id.text1, new String[] {
@@ -56,7 +48,6 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 		
 		restaurantEndpoint = new Firebase("https://lunchapp.firebaseio.com/restaurant");
 		timeEndpoint = new Firebase("https://lunchapp.firebaseio.com/time");
-
 	}
 
 	/**
@@ -75,7 +66,6 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
-		// Restore the previously serialized current dropdown position.
 		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
 			getActionBar().setSelectedNavigationItem(
 					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
@@ -84,22 +74,18 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
-		// Serialize the current dropdown position.
 		outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar()
 				.getSelectedNavigationIndex());
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.organise_lunch, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onNavigationItemSelected(int position, long id) {
-		// When the given dropdown item is selected, show its contents in the
-		// container view.
 		Fragment fragment = new DummySectionFragment();
 		Bundle args = new Bundle();
 		args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
@@ -113,6 +99,8 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 	 * displays dummy text.
 	 */
 	public static class DummySectionFragment extends Fragment {
+		private static final boolean EVENT_HANDLED = true;
+
 		/**
 		 * The fragment argument representing the section number for this
 		 * fragment.
@@ -152,7 +140,7 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 						default:
 							break;
 					}
-					return true; //Event was handled
+					return EVENT_HANDLED;
 				}
 			});
 			
@@ -179,7 +167,6 @@ public class OrganiseLunch extends FragmentActivity implements ActionBar.OnNavig
 		
 		private void sendSuggestionToFirebase() {
 			if(restaurantEndpoint != null && timeEndpoint != null){
-				System.out.println("Attempt to SEND SUGGESTION! --------------------" + restaurantInput);
 				restaurantEndpoint.setValue(restaurantInput.getText().toString());
 				timeEndpoint.setValue(timeInput.getText().toString());
 			}
